@@ -26,7 +26,7 @@ def oracle_search(d,start,goal,max_no_goalcutoff):
     f=0
     n_g=max_no_goalcutoff
     while (len(queue)!=0):
-        tmp=[]
+        tmp=[]   
         curr=queue.pop(0)         # This is the list of paths with index 0 storing cumulative cost
         currnode=curr[-1]           # This is the last node in the traversed path
         for i in d[currnode].keys():
