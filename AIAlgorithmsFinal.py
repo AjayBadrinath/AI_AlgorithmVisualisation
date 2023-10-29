@@ -376,6 +376,36 @@ def A_star_search(d,start,end,d_heur,oracle_cost_heur):
 A_star_search(d,'S','G',d_h,oracle_cost_heur(d,'S','G',d_h,2))
 
 
+def bestfirst(d,s,e):
+    queue=[[0,s]]
+    res=[]
+    f=0
+    while(len(queue)!=0):
+        u=queue.pop(0)
+        if(u==e):
+            break
+        else:
+            cn=u[-1]
+            for i in d[cn].keys():
+                
+                if i in u:
+                    continue
+                if i=='G':
+                    f=1
+                else:
+                    t1=u+[i]
+                    t1[0]+=d[cn][i]
+                    queue.append(t1)
+            
+            queue.sort(key=lambda k:k[0]) # priority q must be used but nevertheless the same time complexity though
+            
+        res+=[u]
+        if(f==1):
+                break
+    return res
+bestfirst(d,'S','G')
+
+
 # In[197]:
 
 
