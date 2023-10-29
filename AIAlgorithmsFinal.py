@@ -380,7 +380,7 @@ A_star_search(d,'S','G',d_h,oracle_cost_heur(d,'S','G',d_h,2))
 
 
 def form_graph(d,FR): #FR is a function pertaining to defined search algos.
-
+    global l
     g=nx.Graph()
     g.add_nodes_from(d)
     for i in d.keys():
@@ -435,6 +435,7 @@ def animate(i):
     edges=nx.draw_networkx_edges(g,pos,edgelist=list(g.edges),edge_color=tmp)
     return node,edges
 def Viz(g):
+    global pos
     pos = nx.shell_layout(g)
     g=nx.Graph()
     g.add_nodes_from(d) 
@@ -448,7 +449,7 @@ def Viz(g):
 
     ani = animation.FuncAnimation(fig, animate, frames=len(l), interval=1000, repeat=True,blit=False)
     #ani.save("D://anim.mp4")
-    HTML(ani.to_html5_video(30))
+    return HTML(ani.to_html5_video(30))
 
 
 # In[198]:
